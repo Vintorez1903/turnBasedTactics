@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://car4nk0f1c3ac"]
+
+[ext_resource type="Script" uid="uid://cmsiuwkrgs0si" path="res://meta/Camera.cs" id="1_q85v1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q85v1"]
+
+[node name="Camera" type="Node2D"]
+script = ExtResource("1_q85v1")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
+
+[node name="Control" type="Control" parent="Camera2D/CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1154.0
+offset_bottom = 650.0
+
+[node name="Button" type="Button" parent="Camera2D/CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -140.0
+offset_bottom = 66.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 23
+theme_override_styles/focus = SubResource("StyleBoxEmpty_q85v1")
+text = "END TURN"
+
+[connection signal="pressed" from="Camera2D/CanvasLayer/Control/Button" to="." method="OnEndTurnButtonPressed"]
