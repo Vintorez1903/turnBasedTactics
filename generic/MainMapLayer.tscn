@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://llmfkc6retom"]
 
-[ext_resource type="Script" uid="uid://cw08yk5bpg36p" path="res://maps/generic/MainMapLayer.cs" id="1_pw0oq"]
+[ext_resource type="Script" uid="uid://cw08yk5bpg36p" path="res://generic/MainMapLayer.cs" id="1_pw0oq"]
 
 [node name="MainMapLayer" type="TileMapLayer"]
 script = ExtResource("1_pw0oq")

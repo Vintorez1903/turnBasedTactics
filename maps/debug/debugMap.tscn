@@ -1,13 +1,13 @@
 [gd_scene load_steps=15 format=4 uid="uid://csenowrnh7v8u"]
 
 [ext_resource type="Texture2D" uid="uid://nknkpis4lreu" path="res://maps/debug/validMove.png" id="2_tfqjd"]
-[ext_resource type="PackedScene" uid="uid://llmfkc6retom" path="res://maps/generic/MainMapLayer.tscn" id="3_ieiu4"]
+[ext_resource type="PackedScene" uid="uid://llmfkc6retom" path="res://generic/MainMapLayer.tscn" id="3_ieiu4"]
 [ext_resource type="Texture2D" uid="uid://bsugk7s1n6n5s" path="res://maps/debug/ground.png" id="3_py2rk"]
 [ext_resource type="PackedScene" uid="uid://car4nk0f1c3ac" path="res://meta/camera.tscn" id="3_u2125"]
 [ext_resource type="Texture2D" uid="uid://bi8q23yjogcge" path="res://maps/debug/groundSlow.png" id="4_a6rvo"]
 [ext_resource type="Texture2D" uid="uid://c4b01aks2cksx" path="res://maps/debug/wall.png" id="5_fenu7"]
-[ext_resource type="PackedScene" uid="uid://cb5oi5ych005u" path="res://maps/units/tank/red/Tank_Red.tscn" id="7_py2rk"]
-[ext_resource type="PackedScene" uid="uid://m2icuxm271ol" path="res://maps/units/tank/blue/Tank_Blue.tscn" id="8_a6rvo"]
+[ext_resource type="PackedScene" uid="uid://cb5oi5ych005u" path="res://units/tank/red/Tank_Red.tscn" id="7_py2rk"]
+[ext_resource type="PackedScene" uid="uid://m2icuxm271ol" path="res://units/tank/blue/Tank_Blue.tscn" id="8_a6rvo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tfqjd"]
 resource_name = "validMove"

@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://cb5oi5ych005u"]
 
-[ext_resource type="Script" uid="uid://hf45amktqyal" path="res://maps/units/components/Unit.cs" id="1_dsx32"]
-[ext_resource type="Texture2D" uid="uid://cq6ei4c2sj7en" path="res://maps/units/tank/red/tankRearRed.png" id="2_so2et"]
-[ext_resource type="Texture2D" uid="uid://c3jdshfxs41ys" path="res://maps/units/tank/red/tankRightRed.png" id="3_8lcju"]
-[ext_resource type="Texture2D" uid="uid://br3xvfhyjj1xg" path="res://maps/units/tank/red/tankFrontRed.png" id="4_be48s"]
-[ext_resource type="Texture2D" uid="uid://bmqmuc5bj80vb" path="res://maps/units/tank/red/tankLeftRed.png" id="5_307kk"]
+[ext_resource type="Script" uid="uid://hf45amktqyal" path="res://units/components/Unit.cs" id="1_dsx32"]
+[ext_resource type="Texture2D" uid="uid://cq6ei4c2sj7en" path="res://units/tank/red/tankRearRed.png" id="2_so2et"]
+[ext_resource type="Texture2D" uid="uid://c3jdshfxs41ys" path="res://units/tank/red/tankRightRed.png" id="3_8lcju"]
+[ext_resource type="Texture2D" uid="uid://br3xvfhyjj1xg" path="res://units/tank/red/tankFrontRed.png" id="4_be48s"]
+[ext_resource type="Texture2D" uid="uid://bmqmuc5bj80vb" path="res://units/tank/red/tankLeftRed.png" id="5_307kk"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_blnpq"]
 animations = [{
