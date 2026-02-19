@@ -15,11 +15,6 @@ public partial class Camera : Node2D
 			Vector2I cell = terrainLayer.LocalToMap(GetViewport().GetCamera2D().GetGlobalMousePosition());
 			terrainLayer.selectUnit(cell);
 		}
-		
-		if(Input.IsActionJustPressed("order")){
-			Vector2I cell = terrainLayer.LocalToMap(GetViewport().GetCamera2D().GetGlobalMousePosition());
-			terrainLayer.moveUnit(cell);
-		}
 	}
 	
 	private void OnEndTurnButtonPressed(){

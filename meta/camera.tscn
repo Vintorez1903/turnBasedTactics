@@ -23,10 +23,12 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -140.0
-offset_bottom = 66.0
+offset_left = -122.0
+offset_right = 119.0
+offset_bottom = 72.0
 grow_horizontal = 0
-theme_override_font_sizes/font_size = 23
+scale = Vector2(0.5, 0.5)
+theme_override_font_sizes/font_size = 46
 theme_override_styles/focus = SubResource("StyleBoxEmpty_q85v1")
 text = "END TURN"
 

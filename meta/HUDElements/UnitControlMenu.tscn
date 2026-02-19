@@ -14,14 +14,15 @@ scale = Vector2(0.33, 0.33)
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+offset_top = -30.303028
+offset_right = 41.0
+offset_bottom = 0.6969719
 toggle_mode = true
 text = "asdf"
 
 [node name="Button2" type="Button" parent="."]
 layout_mode = 0
-offset_top = 31.0
+offset_top = -60.60605
 offset_right = 45.0
-offset_bottom = 62.0
+offset_bottom = -29.606049
 text = "1234"

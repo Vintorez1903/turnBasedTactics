@@ -162,6 +162,7 @@ public partial class MainMapLayer : TileMapLayer
 		unitSelected=true;
 		initialNode=cell+GetUsedRect().Position;
 		unitControlMenu.Position=MapToLocal(cell+GetUsedRect().Position);
+		unitControlMenu.Show();
 		
 		validMoveDisplay.displayValidMoves(selectedUnit.getMovementRange(),cell+GetUsedRect().Position, selectedUnit.getMovementType());
 	}
