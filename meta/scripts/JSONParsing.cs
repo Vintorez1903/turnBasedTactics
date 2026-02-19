@@ -10,6 +10,12 @@ public class UnitStats{
 		public int Health { get; set; }
 }
 
+public class WeaponStats{
+		public int Damage { get; set; }
+		public int Range { get; set; }
+		public string DamageType { get; set; }
+}
+
 public static class JSONParsing
 {
 	
@@ -17,4 +23,9 @@ public static class JSONParsing
 		string json = File.ReadAllText(inString);
 		return JsonSerializer.Deserialize<UnitStats>(json);
 	}
+	
+	public static WeaponStats weaponStatsParse(string inString){
+		string json = File.ReadAllText(inString);
+		return JsonSerializer.Deserialize<WeaponStats>(json);
+	} 
 }

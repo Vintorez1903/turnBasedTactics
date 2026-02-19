@@ -28,7 +28,7 @@ animations = [{
 
 [node name="TankBlue" type="Node2D"]
 script = ExtResource("1_rsqfv")
-metadata/UnitStats = "maps/units/tank/TankStats.json"
+statSheet = "units/tank/TankStats.json"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_cvm1v")

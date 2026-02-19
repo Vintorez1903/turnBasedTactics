@@ -1,6 +1,7 @@
-[gd_scene load_steps=15 format=4 uid="uid://csenowrnh7v8u"]
+[gd_scene load_steps=18 format=4 uid="uid://csenowrnh7v8u"]
 
 [ext_resource type="Texture2D" uid="uid://nknkpis4lreu" path="res://maps/debug/validMove.png" id="2_tfqjd"]
+[ext_resource type="Texture2D" uid="uid://dkwlur0nv8qq7" path="res://maps/debug/validAttack.png" id="3_fenu7"]
 [ext_resource type="PackedScene" uid="uid://llmfkc6retom" path="res://generic/MainMapLayer.tscn" id="3_ieiu4"]
 [ext_resource type="Texture2D" uid="uid://bsugk7s1n6n5s" path="res://maps/debug/ground.png" id="3_py2rk"]
 [ext_resource type="PackedScene" uid="uid://car4nk0f1c3ac" path="res://meta/camera.tscn" id="3_u2125"]
@@ -8,14 +9,20 @@
 [ext_resource type="Texture2D" uid="uid://c4b01aks2cksx" path="res://maps/debug/wall.png" id="5_fenu7"]
 [ext_resource type="PackedScene" uid="uid://cb5oi5ych005u" path="res://units/tank/red/Tank_Red.tscn" id="7_py2rk"]
 [ext_resource type="PackedScene" uid="uid://m2icuxm271ol" path="res://units/tank/blue/Tank_Blue.tscn" id="8_a6rvo"]
+[ext_resource type="PackedScene" uid="uid://bnw38d7fiohu2" path="res://meta/HUDElements/UnitControlMenu.tscn" id="10_7hbh0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tfqjd"]
 resource_name = "validMove"
 texture = ExtResource("2_tfqjd")
 0:0/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7hbh0"]
+texture = ExtResource("3_fenu7")
+0:0/0 = 0
+
 [sub_resource type="TileSet" id="TileSet_u2125"]
 sources/0 = SubResource("TileSetAtlasSource_tfqjd")
+sources/1 = SubResource("TileSetAtlasSource_7hbh0")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_py2rk"]
 texture = ExtResource("3_py2rk")
@@ -71,6 +78,16 @@ tile_map_data = PackedByteArray("AAD//wAAAQAAAAAAAAAAAAAAAQAAAAAAAAABAAAAAQAAAAA
 tile_set = SubResource("TileSet_ieiu4")
 units = NodePath("../../units")
 commandLayer = NodePath("../commandLayer")
+
+[node name="UnitControlMenu" parent="tileLayers/MainMapLayer" instance=ExtResource("10_7hbh0")]
+visible = false
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [node name="units" type="Node2D" parent="."]
 

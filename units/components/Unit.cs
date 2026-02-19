@@ -1,34 +1,35 @@
 using Godot;
 using System;
 using static sharedTypes;
+using static JSONParsing;
 
 public partial class Unit : Node2D
 {
+	[Export] public string statSheet; 
 	private int defaultMovementRange = 6;
 	private int movementRange = 6;
 	private const int defaultFrame = 1;
 	private MovementType movementType;
 	private bool selected = false;
 	private bool hasMoved = false;
-	private int initialHealth; 
+	private int initialHealth;
 	private int health; 
 	private int teamID;
 	AnimatedSprite2D animPlayer;
 	
-	public void initUnit(
-		int movementInput,
-		string movementTypeInput,
-		int healthInput,
-		int teamIDInput
-	){
-		defaultMovementRange = movementInput;
-		movementRange = movementInput;
-		movementType = (MovementType)Enum.Parse(typeof(MovementType),movementTypeInput);
-		initialHealth = healthInput;
-		health = healthInput;
+	//unit initialization logic
+	public void initUnit(int teamIDInput){
+		UnitStats unitStats = JSONParsing.unitStatsParse(statSheet);
+	
+		defaultMovementRange = unitStats.MovementRange;
+		movementRange = unitStats.MovementRange;
+		movementType = (MovementType)Enum.Parse(typeof(MovementType),unitStats.MovementType);
+		initialHealth = unitStats.Health;
+		health = unitStats.Health;
 		teamID = teamIDInput;
 	}
 	
+	//getters/setters
 	public int getTeamID(){
 		return teamID;
 	}
@@ -57,6 +58,7 @@ public partial class Unit : Node2D
 		return hasMoved;
 	}
 	
+	//unit selection logic
 	public void selectUnit(){
 		selected=true;
 		SetProcess(true);
@@ -98,5 +100,16 @@ public partial class Unit : Node2D
 		//convert radians into frame number
 		int frameNumber = (int)(animFrame/(Mathf.Pi/(2)));
 		animPlayer.Frame=frameNumber;
+	}
+	
+	//combat logic
+	public void hurt(int dmg){
+		health-=dmg;
+	}
+	
+	public void attack(WeaponStats wepStats,Unit target){
+		if(target.getTeamID()!=getTeamID()){
+			target.hurt(wepStats.Damage);
+		}
 	}
 }

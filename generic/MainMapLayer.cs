@@ -23,12 +23,14 @@ public partial class MainMapLayer : TileMapLayer
 	Vector2I pathNode;
 	private int pathCost = 0;
 	private int currentPathNode = 0;
-	
+	Control unitControlMenu;
 	private bool unitMoving = false;
 	private bool unitSelected = false;
 	
 	private int numPlayers = 2;
 	private int currentTurn = 0;
+	
+	Vector2I initialNode;
 	
 	
 	public override void _Ready(){
@@ -37,6 +39,8 @@ public partial class MainMapLayer : TileMapLayer
 		initUnits();
 		validMoveDisplay = new ValidMoveDisplay(commandLayer,this);
 		pathfinder = new AStarPathfinder(this);
+		
+		unitControlMenu=(Control)GetNode("UnitControlMenu");
 	}
 	
 	public override void _PhysicsProcess(double delta){
@@ -68,19 +72,13 @@ public partial class MainMapLayer : TileMapLayer
 	}
 	
 	private void initFromResFile(Unit unit){
-		UnitStats unitStats = unitStatsParse(unit.GetMeta("UnitStats").ToString());
 		int ownedBy = 0;
 		
 		if(unit.Name.ToString().Contains("TankBlue")){
 			ownedBy=1;
 		}
 		
-		unit.initUnit(
-			unitStats.MovementRange,
-			unitStats.MovementType,
-			unitStats.Health,
-			ownedBy
-		);
+		unit.initUnit(ownedBy);
 	}
 	
 	public bool isOccupied(Vector2I cell){
@@ -128,7 +126,6 @@ public partial class MainMapLayer : TileMapLayer
 		}
 	}
 	
-	Vector2I initialNode;
 	public void updateUnitPosition(Unit unit,Vector2I newLocation){
 		Vector2I cell=initialNode-GetUsedRect().Position;
 		unitLocations[cell.X,cell.Y]=null;
@@ -164,8 +161,8 @@ public partial class MainMapLayer : TileMapLayer
 		unitLocations[cell.X,cell.Y].selectUnit();
 		unitSelected=true;
 		initialNode=cell+GetUsedRect().Position;
-			
-			
+		unitControlMenu.Position=MapToLocal(cell+GetUsedRect().Position);
+		
 		validMoveDisplay.displayValidMoves(selectedUnit.getMovementRange(),cell+GetUsedRect().Position, selectedUnit.getMovementType());
 	}
 	

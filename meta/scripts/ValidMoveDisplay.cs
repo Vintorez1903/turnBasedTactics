@@ -30,15 +30,23 @@ public partial class ValidMoveDisplay
 	}
 	
 	public void clearDisplayedMoves(){
-		if(lastTiles!=null){
-			while(lastTiles.Count>0){
-				commandCellSetClear(lastTiles.Dequeue());
+		Rect2 usedRect = commandLayer.GetUsedRect();
+		Vector2I startPos = (Vector2I)usedRect.Position;
+		Vector2I endPos = (Vector2I)usedRect.Size + startPos;
+		
+		for(int i = startPos.X; i < endPos.X; i++){
+			for(int j = startPos.Y; j < endPos.Y; j++){
+					commandCellSetClear(new Vector2I(i,j));
 			}
 		}
 	}
 	
 	private void commandCellSetMove(Vector2I cell){
 		commandLayer.SetCell(cell, 0, new Vector2I(0, 0), 0);
+	}
+	
+	private void commandCellSetAttack(Vector2I cell){
+		commandLayer.SetCell(cell, 1, new Vector2I(0, 0), 0);
 	}
 	
 	private void commandCellSetClear(Vector2I cell){
