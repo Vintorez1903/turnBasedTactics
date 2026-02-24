@@ -6,6 +6,7 @@ using static JSONParsing;
 public partial class Unit : Node2D
 {
 	[Export] public string statSheet; 
+	[Export] public string[] weaponSheet;
 	private int defaultMovementRange = 6;
 	private int movementRange = 6;
 	private const int defaultFrame = 1;
@@ -16,6 +17,7 @@ public partial class Unit : Node2D
 	private int health; 
 	private int teamID;
 	AnimatedSprite2D animPlayer;
+	WeaponStats[] weapons;
 	
 	//unit initialization logic
 	public void initUnit(int teamIDInput){

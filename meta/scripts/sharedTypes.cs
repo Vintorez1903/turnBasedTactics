@@ -9,4 +9,10 @@ public static class sharedTypes
 		WHEELS,
 		FLYING
 	}
+	
+	public enum OrderType{
+		NULL,
+		MOVE,
+		ATTACK
+	}
 }

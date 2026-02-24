@@ -1,28 +1,27 @@
-[gd_scene format=3 uid="uid://bnw38d7fiohu2"]
+[gd_scene load_steps=2 format=3 uid="uid://bnw38d7fiohu2"]
 
-[node name="UnitControlMenu" type="Control"]
-z_index = 999
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = -1152.0
-offset_bottom = -648.0
-grow_horizontal = 2
-grow_vertical = 2
+[ext_resource type="Script" uid="uid://dk1enpbhgsem0" path="res://meta/HUDElements/UnitControlMenu.cs" id="1_6jahb"]
+
+[node name="UnitControlMenu" type="CanvasLayer"]
+layer = 999
 scale = Vector2(0.33, 0.33)
+transform = Transform2D(0.33, 0, 0, 0.33, 0, 0)
+follow_viewport_enabled = true
+script = ExtResource("1_6jahb")
 
-[node name="Button" type="Button" parent="."]
-layout_mode = 0
-offset_top = -30.303028
-offset_right = 41.0
-offset_bottom = 0.6969719
+[node name="moveButton" type="Button" parent="."]
+offset_top = -31.0
+offset_right = 55.0
 toggle_mode = true
-text = "asdf"
+text = "MOVE"
+metadata/_edit_use_anchors_ = true
 
-[node name="Button2" type="Button" parent="."]
-layout_mode = 0
-offset_top = -60.60605
-offset_right = 45.0
-offset_bottom = -29.606049
-text = "1234"
+[node name="attackButton" type="Button" parent="."]
+offset_top = -62.0
+offset_right = 68.0
+offset_bottom = -31.0
+text = "ATTACK"
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="moveButton" to="." method="OnMoveButtonPressed"]
+[connection signal="pressed" from="attackButton" to="." method="OnAttackButtonPressed"]

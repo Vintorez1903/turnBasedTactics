@@ -30,6 +30,8 @@ public partial class MainMapLayer : TileMapLayer
 	private int numPlayers = 2;
 	private int currentTurn = 0;
 	
+	OrderType currentOrder;
+	
 	Vector2I initialNode;
 	
 	
@@ -39,8 +41,6 @@ public partial class MainMapLayer : TileMapLayer
 		initUnits();
 		validMoveDisplay = new ValidMoveDisplay(commandLayer,this);
 		pathfinder = new AStarPathfinder(this);
-		
-		unitControlMenu=(Control)GetNode("UnitControlMenu");
 	}
 	
 	public override void _PhysicsProcess(double delta){
@@ -55,6 +55,17 @@ public partial class MainMapLayer : TileMapLayer
 	public override void _Input(InputEvent @event){
 		if(Input.IsActionJustPressed("endTurn")){
 			endTurn();
+		}
+		
+		if(Input.IsActionJustPressed("giveOrder")){
+			executeOrder();
+		}
+	}
+	
+	//logic for giving orders
+	private void executeOrder(){
+		if(currentOrder==OrderType.MOVE){
+			moveUnit(LocalToMap(GetLocalMousePosition()));
 		}
 	}
 	
@@ -137,7 +148,7 @@ public partial class MainMapLayer : TileMapLayer
 	}
 	
 	//logic for selecting units
-	public void selectUnit(Vector2I cell){
+	public int selectUnit(Vector2I cell){
 		Rect2I usedRect = GetUsedRect();
 		
 		//deselect a unit if one's already selected
@@ -149,22 +160,22 @@ public partial class MainMapLayer : TileMapLayer
 		//check if something's actually there
 		cell=cell-usedRect.Position;
 		if(unitLocations[cell.X,cell.Y]==null){
-			return;
+			return 1;
 		}
 		
 		//check if we're actually allowed to select it
 		selectedUnit=unitLocations[cell.X,cell.Y];
 		if(selectedUnit.getMovedStatus()==true || selectedUnit.getTeamID()!=currentTurn){
-			return;
+			return 2;
 		}
 		
+		setCurrentOrder(OrderType.NULL);
 		unitLocations[cell.X,cell.Y].selectUnit();
 		unitSelected=true;
 		initialNode=cell+GetUsedRect().Position;
-		unitControlMenu.Position=MapToLocal(cell+GetUsedRect().Position);
-		unitControlMenu.Show();
 		
 		validMoveDisplay.displayValidMoves(selectedUnit.getMovementRange(),cell+GetUsedRect().Position, selectedUnit.getMovementType());
+		return 0;
 	}
 	
 	public void deselectUnit(){
@@ -174,6 +185,10 @@ public partial class MainMapLayer : TileMapLayer
 			selectedUnit.deselectUnit();
 			selectedUnit=null;
 		}
+	}
+	
+	public void setCurrentOrder(OrderType orderInput){
+		currentOrder = orderInput;
 	}
 	
 	//logic for handling turns

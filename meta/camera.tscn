@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://car4nk0f1c3ac"]
+[gd_scene load_steps=4 format=3 uid="uid://car4nk0f1c3ac"]
 
 [ext_resource type="Script" uid="uid://cmsiuwkrgs0si" path="res://meta/Camera.cs" id="1_q85v1"]
+[ext_resource type="PackedScene" uid="uid://bnw38d7fiohu2" path="res://meta/HUDElements/UnitControlMenu.tscn" id="2_3pfn3"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q85v1"]
 
@@ -31,5 +32,8 @@ scale = Vector2(0.5, 0.5)
 theme_override_font_sizes/font_size = 46
 theme_override_styles/focus = SubResource("StyleBoxEmpty_q85v1")
 text = "END TURN"
+
+[node name="UnitControlMenu" parent="." instance=ExtResource("2_3pfn3")]
+visible = false
 
 [connection signal="pressed" from="Camera2D/CanvasLayer/Control/Button" to="." method="OnEndTurnButtonPressed"]
