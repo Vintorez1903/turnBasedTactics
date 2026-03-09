@@ -23,9 +23,13 @@ below is a small list of features that are currently in this prototype:
 At the time of writing I was preparing to add attacking to the game, if I ever come back to this it will probably be the first non-refactoring change to be made.
 
 Controls: 
+	
 	-WASD to move camera
+	
 	-RMB to select a unit
+	
 	-LMB to command a unit
+	
 	-upon selecting where a unit is to go a contextual menu pops up with additional options.
 
 This readme is formatted for viewing in a text editor, sorry if it looks bad when viewed on github's site directly.
@@ -36,11 +40,16 @@ Below is a summary of some of the game's main classes.
 - MainMapLayer.cs -
 Not Static
 Purpose:
-	-Be the main scene around which most others revolve
-	-store terrain tiles and data pertaining to them
-	-Initialize units and store unit positions
-	-Move units around the board at the behest of the players
-	-Store data about and manage player turns
+
+  -Be the main scene around which most others revolve
+
+  -store terrain tiles and data pertaining to them
+
+  -Initialize units and store unit positions
+
+  -Move units around the board at the behest of the players
+
+  -Store data about and manage player turns
 
 - AStarPathfinding.cs -
 Not Static
