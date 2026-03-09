@@ -35,7 +35,7 @@ Controls:
 Below is a summary of some of the game's main classes.
 ----- Major Classes (broad strokes) -----
 
-- MainMapLayer.cs -
+MainMapLayer.cs
 Not Static
 Purpose:
 
@@ -49,7 +49,7 @@ Purpose:
 
   -Store data about and manage player turns
 
-- AStarPathfinding.cs -
+AStarPathfinding.cs
 Not Static
 Purpose:
 
@@ -62,7 +62,7 @@ Contains:
 	-the pathfind() method that finds the shortest path given a start and end position as well as a movement type
 		-returns a tuple containing the true cost of a path as well as an array containing the nodes in the path
 
-- JSONParsing.cs -
+JSONParsing.cs
 
 Static
 
@@ -75,7 +75,7 @@ Contains:
 	
 	-methods to parse JSON into these classes
 
-- unit.cs -
+unit.cs
 
 Not Static
 
