@@ -36,18 +36,20 @@ Below is a summary of some of the game's main classes.
 ----- Major Classes (broad strokes) -----
 
 MainMapLayer.cs
+
 Not Static
+
 Purpose:
 
-  -Be the main scene around which most others revolve
+  	-Be the main scene around which most others revolve
 
-  -store terrain tiles and data pertaining to them
+  	-store terrain tiles and data pertaining to them
 
-  -Initialize units and store unit positions
+  	-Initialize units and store unit positions
 
-  -Move units around the board at the behest of the players
+  	-Move units around the board at the behest of the players
 
-  -Store data about and manage player turns
+  	-Store data about and manage player turns
 
 AStarPathfinding.cs
 Not Static
