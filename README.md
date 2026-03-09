@@ -33,7 +33,6 @@ Controls:
 	-upon selecting where a unit is to go a contextual menu pops up with additional options.
 
 Below is a summary of some of the game's main classes.
------ Major Classes (broad strokes) -----
 
 MainMapLayer.cs
 
