@@ -1,3 +1,5 @@
+This is the beginnings of my implimentation of an advance-wars style combat system. I had initially intended to keep it private as I was making a game
+
 ----- Major Classes (broad strokes) -----
 
 - MainMapLayer.cs -
@@ -25,3 +27,12 @@ Purpose:
 Contains:
 	-Objects for unit/weapon stats
 	-methods to parse JSON into these classes
+
+- unit.cs -
+Not Static
+Purpose:
+	-contain logic for unit animations,
+  	-store unit stats in the form of objects that have been provided to it by JSONParsing.cs
+  	-
+Contains:
+  -m
