@@ -10,13 +10,23 @@ public partial class UnitControlMenu : CanvasLayer
 		mainMap=mapIn;
 	}
 	
-	private void OnMoveButtonPressed(){
-		mainMap.setCurrentOrder(OrderType.MOVE);
-		Visible=false;
+	public bool isOpen(){
+		return Visible;
 	}
 	
-	public void OnAttackButtonPressed(){
-		mainMap.setCurrentOrder(OrderType.ATTACK);
+	private void OnWaitButtonPressed(){
 		Visible=false;
+		mainMap.SetSelectedUnitMoved(true);
+	}
+	
+	private void OnAttackButtonPressed(){
+		Visible=false;
+		mainMap.setCurrentOrder(OrderType.ATTACK);
+	}
+	
+	private void OnCancelButtonPressed(){
+		Visible=false;
+		mainMap.setCurrentOrder(OrderType.MOVE);
+		mainMap.cancelOrder();
 	}
 }

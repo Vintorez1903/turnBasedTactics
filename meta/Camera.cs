@@ -12,17 +12,29 @@ public partial class Camera : Node2D
 	public override void _Ready(){
 		unitControlMenu = (UnitControlMenu)GetNode("UnitControlMenu");
 		unitControlMenu.initMenu(mainLayer);
+		mainLayer.recieveControlMenu(unitControlMenu);
 	}
 	
 	public override void _Input(InputEvent @event){
+		//select unit
 		if(Input.IsActionJustPressed("select")){
 			Vector2I cell = mainLayer.LocalToMap(GetViewport().GetCamera2D().GetGlobalMousePosition());
 			int unitSelected = mainLayer.selectUnit(cell);
-			if(unitSelected == 0){
-				unitControlMenu.Offset = mainLayer.MapToLocal(cell);
-				unitControlMenu.Visible = true;
-			}
 		}
+	}
+	
+	//logic related to the unit control menu
+	public void moveUnitControlMenu(Vector2I cell){
+		unitControlMenu.Offset = mainLayer.MapToLocal(cell);
+		unitControlMenu.Visible = true;
+	}
+	
+	public void hideUnitControlMenu(){
+		unitControlMenu.Visible = false;
+	}
+	
+	public void showUnitControlMenu(){
+		unitControlMenu.Visible = true;
 	}
 	
 	private void OnEndTurnButtonPressed(){

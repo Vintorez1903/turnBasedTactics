@@ -13,6 +13,7 @@ public static class sharedTypes
 	public enum OrderType{
 		NULL,
 		MOVE,
-		ATTACK
+		ATTACK,
+		WAIT
 	}
 }

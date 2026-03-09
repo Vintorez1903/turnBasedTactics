@@ -9,19 +9,27 @@ transform = Transform2D(0.33, 0, 0, 0.33, 0, 0)
 follow_viewport_enabled = true
 script = ExtResource("1_6jahb")
 
-[node name="moveButton" type="Button" parent="."]
-offset_top = -31.0
+[node name="waitButton" type="Button" parent="."]
+offset_top = -59.909084
 offset_right = 55.0
+offset_bottom = -28.909084
 toggle_mode = true
-text = "MOVE"
+text = "WAIT"
 metadata/_edit_use_anchors_ = true
 
 [node name="attackButton" type="Button" parent="."]
-offset_top = -62.0
+offset_top = -90.90909
 offset_right = 68.0
-offset_bottom = -31.0
+offset_bottom = -59.90909
 text = "ATTACK"
 metadata/_edit_use_anchors_ = true
 
-[connection signal="pressed" from="moveButton" to="." method="OnMoveButtonPressed"]
+[node name="cancelButton" type="Button" parent="."]
+offset_top = -30.303028
+offset_right = 69.0
+offset_bottom = 0.6969719
+text = "CANCEL"
+
+[connection signal="pressed" from="waitButton" to="." method="OnWaitButtonPressed"]
 [connection signal="pressed" from="attackButton" to="." method="OnAttackButtonPressed"]
+[connection signal="pressed" from="cancelButton" to="." method="OnCancelButtonPressed"]

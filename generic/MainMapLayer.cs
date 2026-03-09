@@ -6,34 +6,26 @@ using static JSONParsing;
 
 public partial class MainMapLayer : TileMapLayer
 {
-	[Export]
-	public Node2D units;
+	[Export] public Node2D units;
 	private Unit selectedUnit;
-	
-	[Export]
-	public TileMapLayer commandLayer;
+	[Export] public TileMapLayer commandLayer;
+	[Export] public Camera mainCam;
 	private ValidMoveDisplay validMoveDisplay;
-	
 	private Unit[,] unitLocations;
 	private AStarPathfinder pathfinder;
-	
 	private float charMoveSpeed=100f;
-	
 	Vector2I[] movementPath;
 	Vector2I pathNode;
 	private int pathCost = 0;
 	private int currentPathNode = 0;
-	Control unitControlMenu;
 	private bool unitMoving = false;
 	private bool unitSelected = false;
-	
 	private int numPlayers = 2;
 	private int currentTurn = 0;
-	
 	OrderType currentOrder;
-	
-	Vector2I initialNode;
-	
+	Vector2I lastUnitPos;
+	Vector2I initialUnitPos;
+	UnitControlMenu unitControlMenu;
 	
 	public override void _Ready(){
 		Vector2I mapSize = GetUsedRect().Size;
@@ -45,10 +37,8 @@ public partial class MainMapLayer : TileMapLayer
 	
 	public override void _PhysicsProcess(double delta){
 		float fdelta = (float)delta;
-		if(unitSelected){
-			if(unitMoving){
-				doUnitMovement(fdelta);
-			}
+		if(unitSelected && unitMoving){
+			doUnitMovement(fdelta);
 		}
 	}
 	
@@ -57,7 +47,7 @@ public partial class MainMapLayer : TileMapLayer
 			endTurn();
 		}
 		
-		if(Input.IsActionJustPressed("giveOrder")){
+		if(Input.IsActionJustPressed("giveOrder") && !unitControlMenu.isOpen()){
 			executeOrder();
 		}
 	}
@@ -65,11 +55,12 @@ public partial class MainMapLayer : TileMapLayer
 	//logic for giving orders
 	private void executeOrder(){
 		if(currentOrder==OrderType.MOVE){
+			initialUnitPos=LocalToMap(selectedUnit.GlobalPosition);
 			moveUnit(LocalToMap(GetLocalMousePosition()));
 		}
 	}
 	
-	//logic for initializing units
+	//logic for initializing/managing units
 	private void initUnits(){
 		Godot.Collections.Array<Node> children = units.GetChildren();
 		
@@ -100,6 +91,11 @@ public partial class MainMapLayer : TileMapLayer
 		return false;
 	}
 	
+	//logic for intializing/managing menus
+	public void recieveControlMenu(UnitControlMenu controlIn){
+		unitControlMenu = controlIn;
+	}
+	
 	//logic for changing unit positions
 	public void moveUnit(Vector2I newLocation){
 		if(selectedUnit==null){
@@ -110,7 +106,6 @@ public partial class MainMapLayer : TileMapLayer
 			currentPathNode=0;
 			pathNode=movementPath[currentPathNode];
 			unitMoving=true;
-			selectedUnit.setMovedStatus(true);
 			validMoveDisplay.clearDisplayedMoves();
 		}
 	}
@@ -132,35 +127,41 @@ public partial class MainMapLayer : TileMapLayer
 				pathNode=movementPath[currentPathNode];
 			}
 			else{
-				deselectUnit();
+				mainCam.moveUnitControlMenu(movementPath[currentPathNode]);
+				unitMoving=false;
 			}
 		}
 	}
 	
 	public void updateUnitPosition(Unit unit,Vector2I newLocation){
-		Vector2I cell=initialNode-GetUsedRect().Position;
+		Vector2I cell=lastUnitPos-GetUsedRect().Position;
 		unitLocations[cell.X,cell.Y]=null;
 		
 		Vector2I newCell=newLocation-GetUsedRect().Position;
 		unitLocations[newCell.X,newCell.Y]=unit;
 		unit.GlobalPosition=MapToLocal(newLocation);
-		initialNode=newLocation;
+		lastUnitPos=newLocation;
+	}
+	
+	public void cancelOrder(){
+		updateUnitPosition(selectedUnit,initialUnitPos);
+		validMoveDisplay.displayValidMoves(selectedUnit.getMovementRange(),initialUnitPos, selectedUnit.getMovementType());
 	}
 	
 	//logic for selecting units
 	public int selectUnit(Vector2I cell){
 		Rect2I usedRect = GetUsedRect();
 		
-		//deselect a unit if one's already selected
-		if(selectedUnit!=null){
-			deselectUnit();
-			validMoveDisplay.clearDisplayedMoves();
-		}
-		
 		//check if something's actually there
 		cell=cell-usedRect.Position;
 		if(unitLocations[cell.X,cell.Y]==null){
 			return 1;
+		}
+		
+		//deselect a unit if one's already selected
+		if(selectedUnit!=null){
+			deselectUnit();
+			validMoveDisplay.clearDisplayedMoves();
 		}
 		
 		//check if we're actually allowed to select it
@@ -169,10 +170,10 @@ public partial class MainMapLayer : TileMapLayer
 			return 2;
 		}
 		
-		setCurrentOrder(OrderType.NULL);
+		setCurrentOrder(OrderType.MOVE);
 		unitLocations[cell.X,cell.Y].selectUnit();
 		unitSelected=true;
-		initialNode=cell+GetUsedRect().Position;
+		lastUnitPos=cell+GetUsedRect().Position;
 		
 		validMoveDisplay.displayValidMoves(selectedUnit.getMovementRange(),cell+GetUsedRect().Position, selectedUnit.getMovementType());
 		return 0;
@@ -184,6 +185,14 @@ public partial class MainMapLayer : TileMapLayer
 		if(selectedUnit!=null){
 			selectedUnit.deselectUnit();
 			selectedUnit=null;
+		}
+	}
+	
+	public void SetSelectedUnitMoved(bool boolIn){
+		selectedUnit.setMovedStatus(boolIn);
+		
+		if(boolIn == true){
+			deselectUnit();
 		}
 	}
 	
