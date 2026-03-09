@@ -6,11 +6,17 @@ If I choose to revisit this at a later point I will probably clone this repo and
 
 below is a small list of features that are currently in this prototype:
 	-units can be selected and moved around the map using a custom A* pathfinding implementation
+	
 	-movement ranges are displayed as an overlay on top of the main map
+	
 	-movement orders can be cancelled or completed via a popup menu
+	
 	-support for four different movement types (walking, tracks, wheels, flight)
+	
 	-a variety of terrains that affect movement types differently
+	
 	-support for two players in local co-op
+	
 	-JSON objects that store weapon and unit stats and are parsed at runtime for easy modification
 
 At the time of writing I was preparing to add attacking to the game, if I ever come back to this it will probably be the first non-refactoring change to be made.
