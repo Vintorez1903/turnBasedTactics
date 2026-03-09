@@ -51,7 +51,9 @@ Purpose:
   	-Store data about and manage player turns
 
 AStarPathfinding.cs
+
 Not Static
+
 Purpose:
 
   -provide a grid-based A* pathfinding implimentation that accounts for terrain cost
