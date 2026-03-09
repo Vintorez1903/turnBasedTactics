@@ -5,6 +5,7 @@ So while this was a very good learning experience, at this point most of what I 
 If I choose to revisit this at a later point I will probably clone this repo and take it private, but this one is free for anyone to use if you feel you can get some use out of it. Should be avaiable under the MIT open source license.
 
 below is a small list of features that are currently in this prototype:
+	
 	-units can be selected and moved around the map using a custom A* pathfinding implementation
 	
 	-movement ranges are displayed as an overlay on top of the main map
