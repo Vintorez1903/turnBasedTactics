@@ -32,8 +32,6 @@ Controls:
 	
 	-upon selecting where a unit is to go a contextual menu pops up with additional options.
 
-This readme is formatted for viewing in a text editor, sorry if it looks bad when viewed on github's site directly.
-
 Below is a summary of some of the game's main classes.
 ----- Major Classes (broad strokes) -----
 
