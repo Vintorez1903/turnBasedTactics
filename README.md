@@ -13,9 +13,16 @@ below is a small list of features that are currently in this prototype:
 	-support for two players in local co-op
 	-JSON objects that store weapon and unit stats and are parsed at runtime for easy modification
 
-At the time of writing I was preparing to add attacking to the game, if I ever come back to that it will probably be the first non-refactoring change to be made.
+At the time of writing I was preparing to add attacking to the game, if I ever come back to this it will probably be the first non-refactoring change to be made.
+
+Controls: 
+	-WASD to move camera
+	-RMB to select a unit
+	-LMB to command a unit
+	-upon selecting where a unit is to go a contextual menu pops up with additional options.
 
 This readme is formatted for viewing in a text editor, sorry if it looks bad when viewed on github's site directly.
+
 Below is a summary of some of the game's main classes.
 ----- Major Classes (broad strokes) -----
 
