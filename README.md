@@ -10,7 +10,7 @@ below is a small list of features that are currently in this prototype:
 	
 	-movement ranges are displayed as an overlay on top of the main map
 	
-	-movement orders can be cancelled or completed via a popup menu
+	-movement orders can be canceled or completed via a popup menu
 	
 	-support for four different movement types (walking, tracks, wheels, flight)
 	
