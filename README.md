@@ -1,5 +1,22 @@
-This is the beginnings of my implimentation of an advance-wars style combat system. I had initially intended to keep it private as I was making a game
+This is the beginnings of my implementation of an Advance Wars/ GBA Fire Emblem style battle system. I had initially intended to keep it private.
+My reasons for making it were both to learn more about making this style of game in godot, as well as to make an actual game.
+However, my heart lies with the Real Time Strategy genre, while I do love turn based games as well they are not truly what I want to make.
+So while this was a very good learning experience, at this point most of what I will be implementing will not help me make a real time strategy game, so I've decided to move on.
+If I choose to revisit this at a later point I will probably clone this repo and take it private, but this one is free for anyone to use if you feel you can get some use out of it. Should be avaiable under the MIT open source license.
 
+below is a small list of features that are currently in this prototype:
+	-units can be selected and moved around the map using a custom A* pathfinding implementation
+	-movement ranges are displayed as an overlay on top of the main map
+	-movement orders can be cancelled or completed via a popup menu
+	-support for four different movement types (walking, tracks, wheels, flight)
+	-a variety of terrains that affect movement types differently
+	-support for two players in local co-op
+	-JSON objects that store weapon and unit stats and are parsed at runtime for easy modification
+
+At the time of writing I was preparing to add attacking to the game, if I ever come back to that it will probably be the first non-refactoring change to be made.
+
+This readme is formatted for viewing in a text editor, sorry if it looks bad when viewed on github's site directly.
+Below is a summary of some of the game's main classes.
 ----- Major Classes (broad strokes) -----
 
 - MainMapLayer.cs -
@@ -8,7 +25,7 @@ Purpose:
 	-Be the main scene around which most others revolve
 	-store terrain tiles and data pertaining to them
 	-Initialize units and store unit positions
-	-Move units around the board at the direction of the player
+	-Move units around the board at the behest of the players
 	-Store data about and manage player turns
 
 - AStarPathfinding.cs -
@@ -33,6 +50,4 @@ Not Static
 Purpose:
 	-contain logic for unit animations,
   	-store unit stats in the form of objects that have been provided to it by JSONParsing.cs
-  	-
-Contains:
-  -m
+  	-store unit-specific state like whether it has moved and what player it belongs to
