@@ -6,7 +6,7 @@ If I choose to revisit this at a later point I will probably clone this repo and
 
 below is a small list of features that are currently in this prototype:
 	
-	-units can be selected and moved around the map using a custom A* pathfinding implementation
+	-units can be selected and moved around the map, movement is accomplished by a custom A* implementation
 	
 	-movement ranges are displayed as an overlay on top of the main map
 	
