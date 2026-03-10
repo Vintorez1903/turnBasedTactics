@@ -17,13 +17,6 @@ toggle_mode = true
 text = "WAIT"
 metadata/_edit_use_anchors_ = true
 
-[node name="attackButton" type="Button" parent="."]
-offset_top = -90.90909
-offset_right = 68.0
-offset_bottom = -59.90909
-text = "ATTACK"
-metadata/_edit_use_anchors_ = true
-
 [node name="cancelButton" type="Button" parent="."]
 offset_top = -30.303028
 offset_right = 69.0
@@ -31,5 +24,4 @@ offset_bottom = 0.6969719
 text = "CANCEL"
 
 [connection signal="pressed" from="waitButton" to="." method="OnWaitButtonPressed"]
-[connection signal="pressed" from="attackButton" to="." method="OnAttackButtonPressed"]
 [connection signal="pressed" from="cancelButton" to="." method="OnCancelButtonPressed"]

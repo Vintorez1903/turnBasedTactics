@@ -19,11 +19,6 @@ public partial class UnitControlMenu : CanvasLayer
 		mainMap.SetSelectedUnitMoved(true);
 	}
 	
-	private void OnAttackButtonPressed(){
-		Visible=false;
-		mainMap.setCurrentOrder(OrderType.ATTACK);
-	}
-	
 	private void OnCancelButtonPressed(){
 		Visible=false;
 		mainMap.setCurrentOrder(OrderType.MOVE);

@@ -1,5 +1,5 @@
 This is the beginnings of my implementation of an Advance Wars/ GBA Fire Emblem style battle system. I had initially intended to keep it private.
-My reasons for making it were both to learn more about making this style of game in godot, as well as to make an actual game.
+My reasons for making it were both to learn more about making this style of game in godot, as well as to actually make a game.
 However, my heart lies with the Real Time Strategy genre, while I do love turn based games as well they are not truly what I want to make.
 So while this was a very good learning experience, at this point most of what I will be implementing will not help me make a real time strategy game, so I've decided to move on.
 If I choose to revisit this at a later point I will probably clone this repo and take it private, but this one is free for anyone to use if you feel you can get some use out of it. Should be avaiable under the MIT open source license.
